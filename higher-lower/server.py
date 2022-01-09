@@ -3,6 +3,7 @@ import random
 
 
 random_no = random.randint(0,9)
+print(random_no)
 
 
 app = Flask(__name__)
@@ -13,8 +14,24 @@ def home():
         "<img src='https://media.giphy.com/media/3o7aCSPqXE5C6T8tBC/giphy.gif'>"
 
 
-# @app.route("/entry/id")
-# def guess():
+@app.route("/<int:guess>")
+def guess_number(guess):
+    if guess > random_no:
+        return "<h1 style='color: Orange'>Too high, Try again</h1>"\
+            "<img src='https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif'>"
+
+
+    elif guess < random_no:
+        return "<h1 style='color: Tomato'>Too low, Try again</h1>"\
+            "<img src='https://media.giphy.com/media/jD4DwBtqPXRXa/giphy.gif'>"
+
+    
+    else:
+        return "<h1 style='color: Tomato'>Correct answer</h1>"\
+            "<img src='https://media.giphy.com/media/4T7e4DmcrP9du/giphy.gif'>"
+
+
+
 
 
 
