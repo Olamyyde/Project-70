@@ -1,6 +1,8 @@
 from ast import Num
 from flask import Flask, render_template
 from random import randint
+from datetime import datetime
+
 
 app = Flask(__name__)
 
@@ -8,7 +10,8 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     rando = randint(2,5)
-    return render_template("index.html", Num=rando)
+    current_year = datetime.now().year
+    return render_template("index.html", Num=rando, year=current_year)
 
 
 
